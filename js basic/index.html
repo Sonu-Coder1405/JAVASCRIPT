@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic JS</title>
+</head>
+<body>
+
+
+
+
+    <script>
+        // ========================================== Operators & Conditions ============================================
+//1) Check karo number even hai ya odd.
+// let num = 50;
+// if(num % 2 == 0) {
+//     console.log("even no.");
+// }
+// else {
+//     console.log("odd no.");
+// }
+
+// // 2) Largest of 3 numbers find karo.
+
+// let [a, b, c] = [500, 55, 440];
+
+// if(a>=b && a>=c) {
+//     console.log(a+ " is greater");
+// }
+// else if(b>=a && b>=c) {
+//     console.log(b+ " is greater");
+// }
+// else {
+//     console.log(c+ " is greater");
+// }
+
+// // 3) Leap year check karo.
+// // let year = prompt("enter year");
+// let year = 2028;
+// if(year % 4 == 0) {
+//     console.log(`year ${year} is leap year`);
+// }
+// else {
+//     console.log(`year ${year} is not a leap year`);
+
+// }
+
+// // 4) Positive / negative / zero check karo.
+// let number = 0;
+// if(number > 0) {
+//     console.log(`number ${number} is positive`);
+// }
+// else if(number < 0) {
+//     console.log(`number ${number} is negative`);
+// }
+// else {
+//     console.log(`number ${number} is zero`);
+
+// }
+
+
+// // 5) Grade system banao using if else.
+
+// let subjects = ["hindi", "eng", "math", "sci", "sst"];
+// let sum = 0;
+
+// subjects.forEach(subject => {
+//     // console.log(subject);
+//    let marks = Number(prompt(`Enter marks for ${subject}`));
+//     console.log(`${subject} : ${marks}`);
+
+//     sum += marks;
+    
+    
+// });
+
+// console.log("total marks:", sum);
+
+// if(sum <= 500 && sum>399 ) {
+//     console.log("A grade");
+// }
+// else if(sum <= 399 && sum>299 ) {
+//     console.log("B grade");
+// }
+// else if(sum <= 299 && sum>199 ) {
+//     console.log("C grade");
+// }
+// else if(sum <= 199 && sum>166 ) {
+//     console.log("D grade");
+// }
+// else {
+//     console.log("student fail!");
+
+// }
+
+// 6) Calculator banao using switch.
+
+// let num1 = 5;
+// let num2 = 2;
+// let operator = "-";
+// let result;
+
+// switch(operator) {
+//     case "+" : 
+//     result = num1 + num2;
+//     console.log(result);
+//     break;
+
+//     case "-" : 
+//     result = num1 - num2;
+//     console.log(result);
+//     break;
+
+//     case "*" : 
+//     result = num1 * num2;
+//     console.log(result);
+//     break;
+
+//     case "/" : 
+//     result = num1 / num2;
+//     console.log(result);
+//     break;
+
+//     default: 
+//     console.log("Invalid Operator!");
+// }
+
+// ========================================== Loops Practice ============================================
+
+//1) se 100 tak print karo. ( 3.) Reverse loop chalao.
+
+// for(i=100; i>=1; i-- ) {
+//     console.log(i);
+// }
+
+// 2) Even numbers print karo
+// for(i=0; i<=100; i++) {
+//     if(i % 2 == 0) {
+//         console.log(i);
+//     }
+// }
+
+// 4) Multiplication table banao.
+
+// let num = 6;
+// for(i=1; i<=10; i++) {
+//     console.log(`${num} * ${i} = `, num * i);
+// }
+
+// 5) Factorial find karo.
+// let num = 10;
+// let factorial = 1;
+
+// for(i=1; i<=num; i++) {
+  
+//     factorial = factorial * i;    
+// }
+// console.log("factorial of number", num, "is = ", factorial);
+
+
+
+// 6) Fibonacci series print karo. - The Fibonacci series is a sequence of numbers starting with 0 and 1, where each subsequent number is the sum of the previous two example (0, 1, 1, 2, 3, 5, 8, 13, ...)
+
+// let n = 13;
+// let fTerm = 0, secTerm = 1, nextTerm;
+
+// for(let i=0; i<=n; i++) {
+//     console.log(fTerm);
+//     nextTerm = fTerm + secTerm;
+//     fTerm = secTerm;
+//     secTerm = nextTerm
+// }
+
+
+// 7) Prime number check karo.
+// let num = 27;
+// let isPrime = true;
+
+// if (num <= 1) {
+//     isPrime = false;
+// } else {
+
+//     for (let i = 2; i < num; i++) {
+
+//         if (num % i === 0) {
+//             isPrime = false;
+//             break;
+//         }
+
+//     }
+
+// }
+
+// if (isPrime) {
+//     console.log(num + " is Prime Number");
+// } else {
+//     console.log(num + " is Not Prime Number");
+// }
+
+
+
+// ========================================== . String Questions ============================================
+
+// // 1) String reverse karo. 
+
+// let name = "aaaaaa"
+
+// let reverseName = name.split('').reverse().join();
+// console.log(reverseName);
+
+
+// // 2) Palindrome check karo. 
+
+// let newLetter = name.split('').reverse().join('');
+// if(name == newLetter) {
+//     console.log('yes');
+// }
+// else {
+// console.log('no');
+// }
+
+// // (3) Character count karo.
+
+// let total_char = name.length;
+
+// console.log("character length is " , total_char);
+
+
+// // 4) Vowels count karo.
+
+// let vowelsCount = name.match(/[aeiou]/gi);
+// vowelsCount ? vowelsCount : 0;
+
+// console.log(`Total vowles on character ${name} is : ${vowelsCount.length} and vowels is ${vowelsCount}`);
+
+// // 5) Duplicate characters remove karo.
+
+// let newChar = [...new Set(name)].join('');
+// console.log(`After removeing dublicate characters the charcters are remainig: ${newChar}`);
+
+
+
+// ================================================ 5. Array Interview Questions ===========================================
+
+//1) Array ka max number find karo.
+
+let arr = [150, 15, 20, 500, 10];
+let arr1 = [1, 5, 2, 50, 10];
+
+let maxNum = Math.max(...arr); // using spred operator
+console.log("maximum no of given array is : ", maxNum);
+
+
+//2) Min number find karo.
+
+let minNum = Math.min(...arr);
+console.log("minimum no of given array is : ", minNum);
+
+
+//3) Sum of array.
+let sum = 0;
+for(let i = 0; i<=arr.length; i++) {
+    // console.log(arr[i]);
+    sum += arr[i];
+    
+
+}
+console.log("sum of given array is : ", sum);
+
+//4) Duplicate remove karo.
+
+let unicarray = [...new Set(arr)];
+console.log("after remove dublicate no. : ", unicarray);
+
+
+//5) Array reverse without .reverse()
+
+console.log(arr);
+for(let i = arr.length-1; i>=0; i--) {
+    console.log(arr[i]);
+}
+
+// 6) Sort ascending/descending.
+
+let asc = arr.sort((a, b) => a -b);
+console.log(asc);
+
+let dece = arr.sort((a, b) => b-a);
+console.log(dece);
+
+// 7) Merge two arrays.
+
+let mearge = [...arr, ...arr1];
+console.log("mearge 2 array ", mearge);
+
+// 7) Missing number find karo.
+
+let newArr = [1, 2, 3, 5, 6,8];
+
+for(let i = 1; i<=newArr.length+1; i++) {
+    if(!newArr.includes(i)){
+        console.log("missing no. : ", i);
+    //    break;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

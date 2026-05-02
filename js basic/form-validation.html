@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation UI</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f4f4;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 400px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+        }
+
+        /* Error Border */
+        .error-input {
+            border-color: red;
+        }
+
+        /* Success Border */
+        .success-input {
+            border-color: green;
+        }
+
+        /* Error Message */
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .show_name_error, .show_email_error, .show_pass_error, .show_cpass_error, .show_phone_error {
+            display: flex;
+        }
+
+        /* Success Message */
+        .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+
+        <h2>Registration Form</h2>
+
+        <form id="registrationForm">
+
+            <!-- Name -->
+            <div class="form-group">
+
+                <label for="name">Full Name</label>
+
+                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+
+                <small class="error-message" id="nameError">
+                    Name is required
+                </small>
+
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+
+                <label for="email">Email</label>
+
+                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+
+                <small class="error-message" id="emailError">
+                    Valid email is required
+                </small>
+
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+
+                <label for="password">Password</label>
+
+                <input type="password" id="password" class="form-control" placeholder="Enter password">
+
+                <small class="error-message" id="passwordError">
+                    Password must be at least 8 characters
+                </small>
+
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+
+                <label for="confirmPassword">Confirm Password</label>
+
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password">
+
+                <small class="error-message" id="confirmPasswordError">
+                    Password does not match
+                </small>
+
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+
+                <label for="phone">Phone Number</label>
+
+                <input type="text" id="phone" class="form-control" placeholder="Enter phone number">
+
+                <small class="error-message" id="phoneError">
+                    Enter valid phone number
+                </small>
+
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-btn" id="submitBtn">
+                Submit
+            </button>
+
+        </form>
+
+    </div>
+
+    <script>
+        let registrationForm = document.getElementById("registrationForm");
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let password = document.getElementById("password");
+        let confirmPassword = document.getElementById("confirmPassword");
+        let phone = document.getElementById("phone");
+
+        // validate name
+        const nameValidate = () => {
+            let nameError = document.getElementById("nameError");
+            nameValue = name.value;
+            let alphabetPattern = /^[A-Za-z\s]+$/;
+            if (nameValue.trim() === "") {
+                nameError.innerText = "name is required";
+                nameError.classList.add("show_name_error");
+                return false;
+            }
+            else if (nameValue.length < 3) {
+                nameError.innerText = "minimum character required"
+                nameError.classList.add("show_name_error");
+                return false;
+            }
+            else if (!alphabetPattern.test(nameValue)) {
+                nameError.innerText = "only alfabate allow!"
+                nameError.classListadd("show_name_error");
+                return false;
+            }
+            else {
+                nameError.innerText = ""
+                return true;
+                
+            }
+        }
+
+         // validate email
+        const emailValidate = () => {
+            let emailError = document.getElementById("emailError");
+            let emailValue = email.value;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ ;
+
+            if(emailValue.trim() === "") {
+                emailError.innerText = "email is required";
+                emailError.classList.add("show_email_error");
+                return false;
+            }
+            else if(!emailPattern.test(emailValue)) {
+                emailError.innerText = "Enter Correct Email";
+                emailError.classList.add("show_email_error");
+                return false
+            }
+            else {
+                emailError.innerText = "";
+                return true;
+            }
+        }
+
+        const passwrodValidate = ()=> {
+            let passwordError = document.getElementById("passwordError");
+            let passwordPattren = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/ ;
+            let passValue = password.value;
+
+            if(passValue.trim() === "") {
+                passwordError.innerText = "passwrod is required";
+                passwordError.classList.add("show_pass_error");
+                return false;
+            }
+            else if(passValue.length <= 8) {
+                passwordError.innerText = "minimum eight characher required";
+                passwordError.classList.add("show_pass_error");
+                return false;
+            }
+            else if(!passwordPattren.test(passValue)) {
+                passwordError.innerText = "create strong password";
+                passwordError.classList.add("show_pass_error");
+                return false;
+            }
+            else {
+                passwordError.innerText = "";
+                return true;
+            }
+        }
+
+        const cpassValidate = ()=> {
+            let cpassValue = confirmPassword.value;
+            let cpassError = document.getElementById("confirmPasswordError");
+
+            if(cpassValue.trim() === "") {
+                cpassError.innerText = "rewrite password";
+                cpassError.classList.add("show_cpass_error");
+                return false;
+
+            }
+        }
+
+
+
+        registrationForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if( nameValidate() && emailValidate() && passwrodValidate() ) {
+            console.log(`${nameValue} ${email.value} ${password.value} ${confirmPassword.value} ${phone.value}`);
+
+            }
+            else {
+                console.log("form not submit");
+            }
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Questions</title>
+</head>
+<style>
+    .dark-mode {
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+<body>
+    
+<button class="changeText">click me</button>
+<h1 class="change">text change</h1>
+
+<button class="mode">toggle</button>
+
+<!-- Todo app banao. -->
+<form class="todo-form">
+    <input type="text" placeholder="enter you task" class="todo-input-box">
+    <input type="submit" value="add task" class="todo-btn">
+</form>
+<div class="todo-list-box">
+    <ul>
+        
+    </ul>
+</div>
+
+
+
+<script>
+
+// 1) Button click pe text change karo.
+let btn = document.querySelector(".changeText");
+let container = document.querySelector(".change");
+
+btn.addEventListener("click", ()=> {
+    alert("btn click");
+    container.innerText = "ofter click btn text changed";
+})
+
+// 2) Dark mode toggle banao.
+let btnMode = document.querySelector(".mode");
+
+btnMode.addEventListener("click", ()=> {
+    document.body.classList.toggle("dark-mode");
+   
+})
+
+// 3) Todo app banao.
+let todo_form = document.querySelector(".todo-form");
+let todo_input = document.querySelector(".todo-input-box");
+let todo_list_box = document.querySelector(".todo-list-box ul");
+
+todo_form.addEventListener("submit", (e)=> {
+    e.preventDefault();
+    if(todo_input.value.trim() === "") {
+        alert("do not add empty task");
+        return;
+    }
+    // alert(todo_input.value);
+    // todo_list_box.innerText = todo_input.value;
+    let newEle = document.createElement("li"); //create li
+
+    newEle.innerHTML = todo_input.value; // add task on this lisk
+
+    // create delete btn 
+    let deleteBtn = document.createElement("span");
+    deleteBtn.innerText = '✕';
+    deleteBtn.classList = 'delete-btn';
+
+    //write event to delete list
+    deleteBtn.onclick = ()=> {
+        newEle.remove();
+        deleteBtn.remove();
+    }
+
+    todo_list_box.appendChild(newEle);
+    todo_list_box.appendChild(deleteBtn);
+    
+
+    todo_input.value = '';
+    
+})
+
+
+
+
+</script>
+</body>
+</html>
